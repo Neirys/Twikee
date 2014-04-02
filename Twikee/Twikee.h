@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, TwikeeErrorCode)
 
 + (instancetype)sharedInstance;
 
+- (BOOL)canSendTweet;
 - (void)showWithTitle:(NSString *)title tweetMessage:(NSString *)tweetMessage;
 
 @end

@@ -52,6 +52,11 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
 
 #pragma mark - Instance methods
 
+- (BOOL)canSendTweet
+{
+    return _twitterAccounts.count > 0;
+}
+
 - (void)showWithTitle:(NSString *)title tweetMessage:(NSString *)tweetMessage
 {
     if ([self.delegate respondsToSelector:@selector(twikeeShouldDisplay)])
