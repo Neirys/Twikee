@@ -10,7 +10,7 @@
 
 #import "Twikee.h"
 
-@interface TwikeeBasicTestTests : XCTestCase
+@interface TwikeeBasicTestTests : XCTestCase <TwikeeDelegate>
 {
     Twikee *_twikee;
 }
@@ -25,6 +25,7 @@
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
     _twikee = [Twikee sharedInstance];
+    _twikee.delegate = self;
 }
 
 - (void)tearDown
@@ -36,6 +37,29 @@
 - (void)testSharedInstance
 {
     XCTAssertNotNil(_twikee, @"");
+}
+
+- (void)testShow
+{
+    NSString *title = @"test";
+    NSString *message = @"test";
+    
+    [[Twikee sharedInstance] showWithTitle:title tweetMessage:message];
+}
+
+- (void)testShouldNotDisplayDelegate
+{
+    id<TwikeeDelegate> delegate = [Twikee sharedInstance].delegate;
+    XCTAssertNotNil(delegate, @"");
+    BOOL shouldDisplay = [delegate twikeeShouldDisplay];
+    XCTAssertFalse(shouldDisplay, @"");
+}
+
+#pragma mark - Twikee delegate
+
+- (BOOL)twikeeShouldDisplay
+{
+    return NO;
 }
 
 @end

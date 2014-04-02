@@ -20,4 +20,14 @@
     return instance;
 }
 
+- (void)showWithTitle:(NSString *)title tweetMessage:(NSString *)tweetMessage
+{
+    [[[UIAlertView alloc] initWithTitle:title
+                                message:tweetMessage
+                               delegate:self
+                      cancelButtonTitle:@"Cancel"
+                      otherButtonTitles:@"Send", nil]
+     show];
+}
+
 @end
