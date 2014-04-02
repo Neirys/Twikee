@@ -103,6 +103,11 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
+- (void)twikeeDidSendTweet:(NSString *)tweet
+{
+    NSLog(@"%@", tweet);
+}
+
 - (void)twikeeDidFailWithError:(NSError *)error
 {
     NSLog(@"%@", error);

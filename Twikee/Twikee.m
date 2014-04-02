@@ -131,10 +131,28 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
                                                parameters:parameters];
     request.account = _twitterAccounts[0];
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-        NSLog(@"response date : %@", [[NSString alloc] initWithData:responseData
-                                                           encoding:NSUTF8StringEncoding]);
-        NSLog(@"response URL : %@", urlResponse);
-        NSLog(@"error : %@", error);
+        
+        if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300)
+        {
+            if ([self.delegate respondsToSelector:@selector(twikeeDidSendTweet:)])
+            {
+                [self.delegate twikeeDidSendTweet:tweet];
+            }
+        }
+        else
+        {
+            if ([self.delegate respondsToSelector:@selector(twikeeDidFailWithError:)])
+            {
+                NSDictionary *userInfo = @{
+                                           NSLocalizedDescriptionKey : @"Operation failed",
+                                           NSLocalizedFailureReasonErrorKey : @"Failed tweeting"
+                                           };
+                NSError *error = [NSError errorWithDomain:kTwikeeErrorDomain
+                                                     code:TwikeeErrorCodeFailedTweeting
+                                                 userInfo:userInfo];
+                [self.delegate twikeeDidFailWithError:error];
+            }
+        }
     }];
 }
 

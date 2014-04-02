@@ -12,6 +12,7 @@ typedef NS_ENUM(NSInteger, TwikeeErrorCode)
 {
     TwikeeErrorCodeTwitterUnavailable,
     TwikeeErrorCodeEmptyTweet,
+    TwikeeErrorCodeFailedTweeting,
 };
 
 @protocol TwikeeDelegate <NSObject>
