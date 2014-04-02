@@ -96,13 +96,7 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
     {
         if ([self.delegate respondsToSelector:@selector(twikeeDidFailWithError:)])
         {
-            NSDictionary *userInfo = @{
-                                       NSLocalizedDescriptionKey : @"Operation failed",
-                                       NSLocalizedFailureReasonErrorKey : @"Tweet message should not be nil or empty"
-                                       };
-            NSError *error = [NSError errorWithDomain:kTwikeeErrorDomain
-                                                 code:TwikeeErrorCodeEmptyTweet
-                                             userInfo:userInfo];
+            NSError *error = [self errorForCode:TwikeeErrorCodeEmptyTweet];
             [self.delegate twikeeDidFailWithError:error];
         }
         
@@ -114,13 +108,7 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
     {
         if ([self.delegate respondsToSelector:@selector(twikeeDidFailWithError:)])
         {
-            NSDictionary *userInfo = @{
-                                       NSLocalizedDescriptionKey : @"Operation failed",
-                                       NSLocalizedFailureReasonErrorKey : @"There is no Twitter account authentified"
-                                       };
-            NSError *error = [NSError errorWithDomain:kTwikeeErrorDomain
-                                                 code:TwikeeErrorCodeTwitterUnavailable
-                                             userInfo:userInfo];
+            NSError *error = [self errorForCode:TwikeeErrorCodeTwitterUnavailable];
             [self.delegate twikeeDidFailWithError:error];
         }
         
@@ -148,17 +136,48 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
         {
             if ([self.delegate respondsToSelector:@selector(twikeeDidFailWithError:)])
             {
-                NSDictionary *userInfo = @{
-                                           NSLocalizedDescriptionKey : @"Operation failed",
-                                           NSLocalizedFailureReasonErrorKey : @"Failed tweeting"
-                                           };
-                NSError *error = [NSError errorWithDomain:kTwikeeErrorDomain
-                                                     code:TwikeeErrorCodeFailedTweeting
-                                                 userInfo:userInfo];
+                NSError *error = [self errorForCode:TwikeeErrorCodeFailedTweeting];
                 [self.delegate twikeeDidFailWithError:error];
             }
         }
     }];
+}
+
+- (NSError *)errorForCode:(TwikeeErrorCode)code
+{
+    switch (code) {
+        case TwikeeErrorCodeTwitterUnavailable:
+        {
+            NSDictionary *userInfo = @{
+                                       NSLocalizedDescriptionKey : @"Operation failed",
+                                       NSLocalizedFailureReasonErrorKey : @"There is no Twitter account authentified"
+                                       };
+            return [NSError errorWithDomain:kTwikeeErrorDomain
+                                       code:TwikeeErrorCodeTwitterUnavailable
+                                   userInfo:userInfo];
+
+        }
+        case TwikeeErrorCodeEmptyTweet:
+        {
+            NSDictionary *userInfo = @{
+                                       NSLocalizedDescriptionKey : @"Operation failed",
+                                       NSLocalizedFailureReasonErrorKey : @"Tweet message should not be nil or empty"
+                                       };
+            return [NSError errorWithDomain:kTwikeeErrorDomain
+                                       code:TwikeeErrorCodeEmptyTweet
+                                   userInfo:userInfo];
+        }
+        case TwikeeErrorCodeFailedTweeting:
+        {
+            NSDictionary *userInfo = @{
+                                       NSLocalizedDescriptionKey : @"Operation failed",
+                                       NSLocalizedFailureReasonErrorKey : @"Failed tweeting"
+                                       };
+            return [NSError errorWithDomain:kTwikeeErrorDomain
+                                       code:TwikeeErrorCodeFailedTweeting
+                                   userInfo:userInfo];
+        }
+    }
 }
 
 #pragma mark - UIAlertView delegate methods
