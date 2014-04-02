@@ -408,6 +408,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TwikeeBasicTest/TwikeeBasicTest-Prefix.pch";
 				INFOPLIST_FILE = "TwikeeBasicTest/TwikeeBasicTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -421,6 +422,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TwikeeBasicTest/TwikeeBasicTest-Prefix.pch";
 				INFOPLIST_FILE = "TwikeeBasicTest/TwikeeBasicTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -485,6 +487,7 @@
 				F8A8CBC918EC900F0045FA93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F8A8CBCA18EC900F0045FA93 /* Build configuration list for PBXNativeTarget "TwikeeBasicTestTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +496,7 @@
 				F8A8CBCC18EC900F0045FA93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

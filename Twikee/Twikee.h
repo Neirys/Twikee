@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, TwikeeErrorCode)
+{
+    TwikeeErrorCodeTwitterUnavailable,
+    TwikeeErrorCodeEmptyTweet,
+};
+
 @protocol TwikeeDelegate <NSObject>
 
 @optional
