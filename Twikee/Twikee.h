@@ -12,6 +12,11 @@
 
 @optional
 - (BOOL)twikeeShouldDisplay;
+- (void)twikeeWillDisplay;
+- (void)twikeeDidDisplay;
+- (void)twikeeDidCancel;
+- (void)twikeeDidSendTweet:(NSString *)tweet;
+- (void)twikeeDidFailWithError:(NSError *)error;
 
 @end
 

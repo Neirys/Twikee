@@ -52,14 +52,22 @@
     id<TwikeeDelegate> delegate = [Twikee sharedInstance].delegate;
     XCTAssertNotNil(delegate, @"");
     BOOL shouldDisplay = [delegate twikeeShouldDisplay];
-    XCTAssertFalse(shouldDisplay, @"");
+    XCTAssertFalse(!shouldDisplay, @"");
+}
+
+- (void)testShouldDisplayDelegate
+{
+    id<TwikeeDelegate> delegate = [Twikee sharedInstance].delegate;
+    XCTAssertNotNil(delegate, @"");
+    BOOL shouldDisplay = [delegate twikeeShouldDisplay];
+    XCTAssertTrue(shouldDisplay, @"");
 }
 
 #pragma mark - Twikee delegate
 
 - (BOOL)twikeeShouldDisplay
 {
-    return NO;
+    return YES;
 }
 
 @end

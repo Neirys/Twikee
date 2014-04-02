@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+#import "Twikee.h"
+
+@interface ViewController () <TwikeeDelegate>
 
 @end
 
@@ -24,6 +26,29 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[Twikee sharedInstance] setDelegate:self];
+    [[Twikee sharedInstance] showWithTitle:@"Would you like to send a promoted tweet to unlock a life ?" tweetMessage:@"Tweet message : This is a promoted tweet"];
+}
+
+- (BOOL)twikeeShouldDisplay
+{
+    return YES;
+}
+
+- (void)twikeeWillDisplay
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)twikeeDidDisplay
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 @end

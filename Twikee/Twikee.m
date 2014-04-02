@@ -22,12 +22,28 @@
 
 - (void)showWithTitle:(NSString *)title tweetMessage:(NSString *)tweetMessage
 {
+    if ([self.delegate respondsToSelector:@selector(twikeeShouldDisplay)])
+    {
+        BOOL shouldDisplay = [self.delegate twikeeShouldDisplay];
+        if (!shouldDisplay) return;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(twikeeWillDisplay)])
+    {
+        [self.delegate twikeeWillDisplay];
+    }
+    
     [[[UIAlertView alloc] initWithTitle:title
                                 message:tweetMessage
                                delegate:self
                       cancelButtonTitle:@"Cancel"
                       otherButtonTitles:@"Send", nil]
      show];
+    
+    if ([self.delegate respondsToSelector:@selector(twikeeDidDisplay)])
+    {
+        [self.delegate twikeeDidDisplay];
+    }
 }
 
 @end
