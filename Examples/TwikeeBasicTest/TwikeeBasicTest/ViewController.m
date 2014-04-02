@@ -51,4 +51,9 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
+- (void)twikeeDidCancel
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
 @end
