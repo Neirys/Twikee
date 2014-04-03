@@ -72,7 +72,12 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
         [self.delegate twikeeWillDisplay];
     }
     
-    _tweet = tweetMessage;
+    _tweet = [tweetMessage copy];
+    if (_placeholder && ![_placeholder isEqualToString:@""])
+    {
+        tweetMessage = [_placeholder stringByAppendingString:tweetMessage];
+    }
+    
     [[[UIAlertView alloc] initWithTitle:title
                                             message:tweetMessage
                                            delegate:self

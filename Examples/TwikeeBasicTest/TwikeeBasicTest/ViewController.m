@@ -76,11 +76,10 @@
 //        }];
 //    }];
     
-
-    
     [[Twikee sharedInstance] setDelegate:self];
+    [[Twikee sharedInstance] setPlaceholder:@"Preview : "];
     [[Twikee sharedInstance] showWithTitle:@"Would you like to send a promoted tweet to unlock a life ?"
-                              tweetMessage:@"test messagetest messagetest messagetest messagetest messagetest messagetest messagetest message"];
+                              tweetMessage:@"test"];
 }
 
 - (BOOL)twikeeShouldDisplay

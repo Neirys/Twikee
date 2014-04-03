@@ -31,6 +31,8 @@ typedef NS_ENUM(NSInteger, TwikeeErrorCode)
 
 @property (weak, nonatomic) id<TwikeeDelegate> delegate;
 
+@property (copy, nonatomic) NSString *placeholder;
+
 + (instancetype)sharedInstance;
 
 - (BOOL)canSendTweet;
