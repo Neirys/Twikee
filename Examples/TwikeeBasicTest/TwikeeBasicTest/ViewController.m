@@ -80,7 +80,7 @@
     
     [[Twikee sharedInstance] setDelegate:self];
     [[Twikee sharedInstance] showWithTitle:@"Would you like to send a promoted tweet to unlock a life ?"
-                              tweetMessage:@"test message"];
+                              tweetMessage:@"test messagetest messagetest messagetest messagetest messagetest messagetest messagetest message"];
 }
 
 - (BOOL)twikeeShouldDisplay

@@ -59,6 +59,8 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
 
 - (void)showWithTitle:(NSString *)title tweetMessage:(NSString *)tweetMessage
 {
+    NSAssert(tweetMessage.length <= 140, @"A tweet should not be up to 140 characters");
+    
     if ([self.delegate respondsToSelector:@selector(twikeeShouldDisplay)])
     {
         BOOL shouldDisplay = [self.delegate twikeeShouldDisplay];
