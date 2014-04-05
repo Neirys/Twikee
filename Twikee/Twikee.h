@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+// Error codes
 typedef NS_ENUM(NSInteger, TwikeeErrorCode)
 {
     TwikeeErrorCodeTwitterUnavailable,
     TwikeeErrorCodeEmptyTweet,
     TwikeeErrorCodeFailedTweeting,
 };
+
 
 @protocol TwikeeDelegate <NSObject>
 
@@ -29,9 +31,11 @@ typedef NS_ENUM(NSInteger, TwikeeErrorCode)
 
 @interface Twikee : NSObject
 
+// delegate for implementing custom behavior
 @property (weak, nonatomic) id<TwikeeDelegate> delegate;
 
-@property (copy, nonatomic) NSString *placeholder;
+
+@property (copy, nonatomic) NSString *messagePrefix;
 
 + (instancetype)sharedInstance;
 

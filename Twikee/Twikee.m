@@ -73,9 +73,9 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
     }
     
     _tweet = [tweetMessage copy];
-    if (_placeholder && ![_placeholder isEqualToString:@""])
+    if (_messagePrefix && ![_messagePrefix isEqualToString:@""])
     {
-        tweetMessage = [_placeholder stringByAppendingString:tweetMessage];
+        tweetMessage = [_messagePrefix stringByAppendingString:tweetMessage];
     }
     
     [[[UIAlertView alloc] initWithTitle:title
