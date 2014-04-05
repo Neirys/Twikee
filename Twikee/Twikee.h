@@ -8,14 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-// Error codes
 typedef NS_ENUM(NSInteger, TwikeeErrorCode)
 {
     TwikeeErrorCodeTwitterUnavailable,
     TwikeeErrorCodeEmptyTweet,
     TwikeeErrorCodeFailedTweeting,
 };
-
 
 @protocol TwikeeDelegate <NSObject>
 
@@ -34,12 +32,18 @@ typedef NS_ENUM(NSInteger, TwikeeErrorCode)
 // delegate for implementing custom behavior
 @property (weak, nonatomic) id<TwikeeDelegate> delegate;
 
-
-@property (copy, nonatomic) NSString *messagePrefix;
-
+// get singleton object
 + (instancetype)sharedInstance;
 
+// return NO if there's no Twitter account binded on the device
 - (BOOL)canSendTweet;
+
+// call showWithTitle:tweetMessage:prefixMessage with prefixMessage set to nil
 - (void)showWithTitle:(NSString *)title tweetMessage:(NSString *)tweetMessage;
+
+// display an UIAlertView that prompt a user to send an advertising tweet
+// prefixMessage parameter is just an informative message an will not be sent with the tweet
+// warning : this method will throw an exception if tweetMessage characters count > 140
+- (void)showWithTitle:(NSString *)title tweetMessage:(NSString *)tweetMessage prefixMessage:(NSString *)prefixMessage;
 
 @end

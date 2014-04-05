@@ -59,6 +59,11 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
 
 - (void)showWithTitle:(NSString *)title tweetMessage:(NSString *)tweetMessage
 {
+    [self showWithTitle:title tweetMessage:tweetMessage prefixMessage:nil];
+}
+
+- (void)showWithTitle:(NSString *)title tweetMessage:(NSString *)tweetMessage prefixMessage:(NSString *)prefixMessage
+{
     NSAssert(tweetMessage.length <= 140, @"A tweet should not be up to 140 characters");
     
     if ([self.delegate respondsToSelector:@selector(twikeeShouldDisplay)])
@@ -73,9 +78,9 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
     }
     
     _tweet = [tweetMessage copy];
-    if (_messagePrefix && ![_messagePrefix isEqualToString:@""])
+    if (prefixMessage && ![prefixMessage isEqualToString:@""])
     {
-        tweetMessage = [_messagePrefix stringByAppendingString:tweetMessage];
+        tweetMessage = [prefixMessage stringByAppendingString:tweetMessage];
     }
     
     [[[UIAlertView alloc] initWithTitle:title

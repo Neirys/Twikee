@@ -77,7 +77,6 @@
 //    }];
     
     [[Twikee sharedInstance] setDelegate:self];
-    [[Twikee sharedInstance] setMessagePrefix:@"Preview : "];
     [[Twikee sharedInstance] showWithTitle:@"Would you like to send a promoted tweet to unlock a life ?"
                               tweetMessage:@"test"];
 }
