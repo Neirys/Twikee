@@ -23,7 +23,7 @@ Then, you are ready to go with
 ```ios
 - (void)showWithTitle:(NSString *)title tweetMessage:(NSString *)tweetMessage prefixMessage:(NSString *)prefixMessage;
 ```
-This will display an `UIAlertView` with the title you passed on the parameter `title`. `tweetMessage` is the advertising tweet you want the user to send and `prefixMessage` is only an informative text to display (will not be sent with the tweet).
+This will display an `UIAlertView` with the title you passed on the parameter `title`. `tweetMessage` is the advertising tweet you want the user to send and `prefixMessage` is only an informative text to display (will not be sent with the tweet). Warning : this method will throw an exception if `tweetMessage` characters count > 140.
 Example : 
 ```ios
 [[Twikee sharedInstance] showWithTitle:@"Send a promoted tweet to unlock a life ?"
