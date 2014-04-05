@@ -79,10 +79,10 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
     }
     
     [[[UIAlertView alloc] initWithTitle:title
-                                            message:tweetMessage
-                                           delegate:self
-                                  cancelButtonTitle:@"Cancel"
-                                  otherButtonTitles:@"Send", nil] show];
+                                message:tweetMessage
+                               delegate:self
+                      cancelButtonTitle:@"Cancel"
+                      otherButtonTitles:@"Send", nil] show];
     
     if ([self.delegate respondsToSelector:@selector(twikeeDidDisplay)])
     {
