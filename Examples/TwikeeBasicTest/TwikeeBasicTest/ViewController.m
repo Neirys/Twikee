@@ -34,51 +34,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-//    ACAccountStore *store = [[ACAccountStore alloc] init];
-//    ACAccountType *accountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-//    NSArray *accounts = [store accountsWithAccountType:accountType];
-//    ACAccount *twitterAccount = accounts[0];
-//    
-//    NSURL *URL = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/update.json"];
-//    NSDictionary *parameters = @{@"status": @"test twikee"};
-//    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
-//                                            requestMethod:SLRequestMethodPOST
-//                                                      URL:URL
-//                                               parameters:parameters];
-//    request.account = twitterAccount;
-//    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-//        NSLog(@"response date : %@", [[NSString alloc] initWithData:responseData
-//                                                           encoding:NSUTF8StringEncoding]);
-//        NSLog(@"response URL : %@", urlResponse);
-//        NSLog(@"error : %@", error);
-//    }];
-    
-    
-//    ACAccountType *accountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-//    [store requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-//        NSLog(@"%@", @(granted));
-//        NSLog(@"%@", error);
-//        
-//        NSLog(@"%@", store.accounts);
-//        
-//        NSURL *URL = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/update.json"];
-//        NSDictionary *parameters = @{@"status": @"test twikee"};
-//        SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
-//                                                requestMethod:SLRequestMethodPOST
-//                                                          URL:URL
-//                                                   parameters:parameters];
-//        [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-//            NSLog(@"response date : %@", [[NSString alloc] initWithData:responseData
-//                                                               encoding:NSUTF8StringEncoding]);
-//            NSLog(@"response URL : %@", urlResponse);
-//            NSLog(@"error : %@", error);
-//        }];
-//    }];
-    
+
     [[Twikee sharedInstance] setDelegate:self];
-    [[Twikee sharedInstance] showWithTitle:@"Would you like to send a promoted tweet to unlock a life ?"
-                              tweetMessage:@"test"];
+    [[Twikee sharedInstance] showWithTitle:@"Send a promoted tweet to unlock a life ?"
+                              tweetMessage:@"Checkout the new Death Fire game @deathfire bit.ly/XXXXX"
+                             prefixMessage:@"Preview : "];
 }
 
 - (BOOL)twikeeShouldDisplay
