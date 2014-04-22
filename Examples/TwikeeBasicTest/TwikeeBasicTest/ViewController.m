@@ -38,7 +38,7 @@
     [[Twikee sharedInstance] setDelegate:self];
     [[Twikee sharedInstance] showWithTitle:@"Send a promoted tweet to unlock a life ?"
                               tweetMessage:@"Checkout the new Death Fire game @deathfire bit.ly/XXXXX"
-                             prefixMessage:@"Preview : "];
+                             prefixMessage:nil];
 }
 
 - (BOOL)twikeeShouldDisplay

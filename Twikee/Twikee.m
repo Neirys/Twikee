@@ -56,7 +56,13 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
     {
         ACAccountStore *store = [[ACAccountStore alloc] init];
         ACAccountType *accountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-        _twitterAccounts = [store accountsWithAccountType:accountType];
+
+        [store requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+            if (granted)
+            {
+                _twitterAccounts = [store accountsWithAccountType:accountType];
+            }
+        }];
     }
     return self;
 }
