@@ -47,5 +47,9 @@ You can also use the following method if you don't need `prefixMessage` :
 ```
 
 # Release Notes
+Version 1.1
+* Fix bug : request for access before fetching Twitter accounts
+* Localization for English and French
+
 Version 1.0
 * Initial release
