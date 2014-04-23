@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F8A70DDC19073CA200BA6D50 /* Twikee.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F8A70DDB19073CA200BA6D50 /* Twikee.bundle */; };
 		F8A8CB9618EC900E0045FA93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A8CB9518EC900E0045FA93 /* Foundation.framework */; };
 		F8A8CB9818EC900E0045FA93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A8CB9718EC900E0045FA93 /* CoreGraphics.framework */; };
 		F8A8CB9A18EC900E0045FA93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A8CB9918EC900E0045FA93 /* UIKit.framework */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F8A70DDB19073CA200BA6D50 /* Twikee.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Twikee.bundle; sourceTree = "<group>"; };
 		F8A8CB9218EC900E0045FA93 /* TwikeeBasicTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwikeeBasicTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8A8CB9518EC900E0045FA93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F8A8CB9718EC900E0045FA93 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -164,6 +166,7 @@
 			children = (
 				F8A8CBCF18EC90E90045FA93 /* Twikee.h */,
 				F8A8CBD018EC90E90045FA93 /* Twikee.m */,
+				F8A70DDB19073CA200BA6D50 /* Twikee.bundle */,
 			);
 			name = Twikee;
 			path = ../../Twikee;
@@ -246,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8A8CBAC18EC900E0045FA93 /* Main_iPad.storyboard in Resources */,
+				F8A70DDC19073CA200BA6D50 /* Twikee.bundle in Resources */,
 				F8A8CBB118EC900E0045FA93 /* Images.xcassets in Resources */,
 				F8A8CBA918EC900E0045FA93 /* Main_iPhone.storyboard in Resources */,
 				F8A8CBA018EC900E0045FA93 /* InfoPlist.strings in Resources */,

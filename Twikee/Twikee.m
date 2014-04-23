@@ -32,10 +32,13 @@
 
 #import "Twikee.h"
 
-static NSString * const kTwikeeErrorDomain   =   @"TwikeeErrorDomain";
+static NSString * const kTwikeeErrorDomain                          =   @"TwikeeErrorDomain";
 
-static NSString * const kTwikeeTwitterAPIPostTweetURL   =   @"https://api.twitter.com/1.1/statuses/update.json";
+static NSString * const kTwikeeTwitterAPIPostTweetURL               =   @"https://api.twitter.com/1.1/statuses/update.json";
 static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status";
+
+static NSString * const kTwikeeLocalizationAlertButtonCancelKey     =   @"TwikeeAlertButtonCancel";
+static NSString * const kTwikeeLocalizationAlertButtonSendKey       =   @"TwikeeAlertButtonSend";
 
 @interface Twikee () <UIAlertViewDelegate>
 {
@@ -110,11 +113,13 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
         tweetMessage = [prefixMessage stringByAppendingString:tweetMessage];
     }
     
+    NSString *cancelString = [self localizedStringForKey:kTwikeeLocalizationAlertButtonCancelKey withDefault:@"Cancel"];
+    NSString *sendString = [self localizedStringForKey:kTwikeeLocalizationAlertButtonSendKey withDefault:@"Send"];
     [[[UIAlertView alloc] initWithTitle:title
                                 message:tweetMessage
                                delegate:self
-                      cancelButtonTitle:@"Cancel"
-                      otherButtonTitles:@"Send", nil] show];
+                      cancelButtonTitle:cancelString
+                      otherButtonTitles:sendString, nil] show];
     
     if ([self.delegate respondsToSelector:@selector(twikeeDidDisplay)])
     {
@@ -217,6 +222,34 @@ static NSString * const kTwikeeTwitterAPIPostTweetParameterTweet    =   @"status
                                    userInfo:userInfo];
         }
     }
+}
+
+#pragma mark - Localization methods
+
+- (NSString *)localizedStringForKey:(NSString *)key withDefault:(NSString *)defaultString
+{
+    static NSBundle *bundle = nil;
+    if (bundle == nil)
+    {
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"Twikee" ofType:@"bundle"];
+        bundle = [NSBundle bundleWithPath:bundlePath];
+        
+        NSString *language = [[NSLocale preferredLanguages] count] ? [NSLocale preferredLanguages][0] : @"en";
+        if (![[bundle localizations] containsObject:language])
+        {
+            language = [language componentsSeparatedByString:@"-"][0];
+        }
+        if ([[bundle localizations] containsObject:language])
+        {
+            bundlePath = [bundle pathForResource:language ofType:@"lproj"];
+        }
+    
+        bundle = [NSBundle bundleWithPath:bundlePath] ?: [NSBundle mainBundle];
+    }
+    
+    defaultString = [bundle localizedStringForKey:key value:defaultString table:nil];
+    
+    return [[NSBundle mainBundle] localizedStringForKey:key value:defaultString table:nil];
 }
 
 #pragma mark - UIAlertView delegate methods
